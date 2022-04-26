@@ -1,5 +1,73 @@
-function generateList(answers) {
-    return `<!DOCTYPE html>
+const Employee = require("../lib/Employee");
+const Intern = require("../lib/Intern");
+const Manager = require("../lib/Manager");
+const Engineer = require("../lib/Engineer")
+
+const teamManager = (employees) => {
+
+    return employees.map(
+        (Manager) => (
+            `<div class="subContainer d-flex justify-content-center">
+    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+        <div class="card-header">
+        <div class="name">${Manager.name}</div>
+        <div class="position">Manager</div>
+    </div>
+        <div class="card-body bg-light">
+            <div class="subCard text-white bg-primary mb-3" style="max-width: 18rem;">
+            <div class="id card-header">ID: ${Manager.id}</div>
+            <div class="email card-header">Email: ${Manager.email}</div>
+            <div class="email card-header">Email:School: ${Manager.officeNumber}</div>
+        </div>
+    </div>
+    </div>`)
+    );
+}
+
+const teamEngineer = (employees) => {
+
+    return employees.map(
+        (Engineer) => (
+            `<div class="subContainer d-flex justify-content-center">
+    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+        <div class="card-header">
+        <div class="name">${Engineer.name}</div>
+        <div class="position">Engineer</div>
+    </div>
+        <div class="card-body bg-light">
+            <div class="subCard text-white bg-primary mb-3" style="max-width: 18rem;">
+            <div class="id card-header">ID: ${Engineer.id}</div>
+            <div class="email card-header">Email: ${Engineer.email}</div>
+            <div class="email card-header">Email:School: ${Engineer.github}</div>
+        </div>
+    </div>
+    </div>`)
+    );
+}
+
+const teamIntern = (employees) => {
+
+    return employees.map(
+        (Intern) => (
+            `<div class="subContainer d-flex justify-content-center">
+    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+        <div class="card-header">
+        <div class="name">${Intern.name}</div>
+        <div class="position">Intern</div>
+    </div>
+        <div class="card-body bg-light">
+            <div class="subCard text-white bg-primary mb-3" style="max-width: 18rem;">
+            <div class="id card-header">ID: ${Intern.id}</div>
+            <div class="email card-header">Email: ${Intern.email}</div>
+            <div class="email card-header">Email:School: ${Intern.school}</div>
+        </div>
+    </div>
+    </div>`)
+    );
+}
+
+const generateList = (employees) =>
+    `<!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -12,27 +80,15 @@ function generateList(answers) {
     <body class="container" style="max-width: 100%; padding: 1px;">
         <div class="jumbotron jumbotron-fluid text-white text-center bg-danger">
             <div class="container">
-                <h1 class="display-5">Team Profile Generator</h1>
+                <h1 class="display-5">My Team</h1>
             </div>
         </div>
         <div class="subContainer d-flex justify-content-center">
-            <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                <div class="card-header">
-                    <div class="name"></div>
-                    <div class="position"></div>
-                </div>
-                <div class="card-body bg-light">
-                    <div class="subCard text-white bg-primary mb-3" style="max-width: 18rem;">
-                        <div class="id card-header"></div>
-                        <div class="email card-header"></div>
-                        <div class="officeNum card-header"></div>
-                    </div>
-                </div>
-            </div>
+        ${teamManager(employees)} 
+        ${teamEngineer(employees)}
+        ${teamIntern(employees)}
         </div>
     </body>
-    </html>
-    `;
-}
+    </html>`;
 
 module.exports = generateList;
