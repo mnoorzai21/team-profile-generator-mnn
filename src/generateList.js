@@ -9,7 +9,7 @@ const addManager = function(managerInfo) {
             <div class="subCard text-white bg-primary mb-3" style="max-width: 18rem;">
             <div class="id card-header">ID: ${managerInfo.id}</div>
             <div class="email card-header">Email: ${managerInfo.email}</div>
-            <div class="email card-header">Office Numbeer: ${managerInfo.officeNumber}</div>
+            <div class="email card-header">Office Number: ${managerInfo.officeNumber}</div>
         </div>
     </div>
     </div>`;

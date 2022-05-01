@@ -117,7 +117,7 @@ const writeFile = (data) => {
             console.log(err);
             return;
         } else {
-            console.log("Team profile is successfully created on index.html");
+            console.log("Team profile is successfully created on team.html");
         }
     })
 };
