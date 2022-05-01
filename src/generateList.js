@@ -1,73 +1,81 @@
-const Employee = require("../lib/Employee");
-const Intern = require("../lib/Intern");
-const Manager = require("../lib/Manager");
-const Engineer = require("../lib/Engineer")
-
-const teamManager = (employees) => {
-
-    return employees.map(
-        (Manager) => (
-            `<div class="subContainer d-flex justify-content-center">
+const addManager = function(managerInfo) {
+    return `<div class="subContainer d-flex justify-content-center">
     <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
         <div class="card-header">
-        <div class="name">${Manager.name}</div>
+        <div class="name">${managerInfo.name}</div>
         <div class="position">Manager</div>
     </div>
         <div class="card-body bg-light">
             <div class="subCard text-white bg-primary mb-3" style="max-width: 18rem;">
-            <div class="id card-header">ID: ${Manager.id}</div>
-            <div class="email card-header">Email: ${Manager.email}</div>
-            <div class="email card-header">Email:School: ${Manager.officeNumber}</div>
+            <div class="id card-header">ID: ${managerInfo.id}</div>
+            <div class="email card-header">Email: ${managerInfo.email}</div>
+            <div class="email card-header">Email:School: ${managerInfo.officeNumber}</div>
         </div>
     </div>
-    </div>`)
-    );
+    </div>`;
 }
 
-const teamEngineer = (employees) => {
-
-    return employees.map(
-        (Engineer) => (
-            `<div class="subContainer d-flex justify-content-center">
+const addEngineer = function(engineerInfo) {
+    return `<div class="subContainer d-flex justify-content-center">
     <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
         <div class="card-header">
-        <div class="name">${Engineer.name}</div>
+        <div class="name">${engineerInfo.name}</div>
         <div class="position">Engineer</div>
     </div>
         <div class="card-body bg-light">
             <div class="subCard text-white bg-primary mb-3" style="max-width: 18rem;">
-            <div class="id card-header">ID: ${Engineer.id}</div>
-            <div class="email card-header">Email: ${Engineer.email}</div>
-            <div class="email card-header">Email:School: ${Engineer.github}</div>
+            <div class="id card-header">ID: ${engineerInfo.id}</div>
+            <div class="email card-header">Email: ${engineerInfo.email}</div>
+            <div class="email card-header">Email:School: ${engineerInfo.github}</div>
         </div>
     </div>
-    </div>`)
-    );
+    </div>`;
 }
 
-const teamIntern = (employees) => {
-
-    return employees.map(
-        (Intern) => (
-            `<div class="subContainer d-flex justify-content-center">
+const addIntern = function(internInfo) {
+    return `<div class="subContainer d-flex justify-content-center">
     <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
         <div class="card-header">
-        <div class="name">${Intern.name}</div>
+        <div class="name">${internInfo.name}</div>
         <div class="position">Intern</div>
     </div>
         <div class="card-body bg-light">
             <div class="subCard text-white bg-primary mb-3" style="max-width: 18rem;">
-            <div class="id card-header">ID: ${Intern.id}</div>
-            <div class="email card-header">Email: ${Intern.email}</div>
-            <div class="email card-header">Email:School: ${Intern.school}</div>
-        </div>
+            <div class="id card-header">ID: ${internInfo.id}</div>
+            <div class="email card-header">Email: ${internInfo.email}</div>
+            <div class="email card-header">Email:School: ${internInfo.school}</div>
+       </div>
     </div>
-    </div>`)
-    );
+    </div>`;
+}
+generateList = (data) => {
+    employeeArray = [];
+    for (let i = 0; i < data.length; i++) {
+        const currentMember = data[i];
+        const currentRole = currentMember.getRole();
+
+        if (currentRole === 'Manager') {
+            const managerCard = addManager(currentMember);
+            employeeArray.push(managerCard);
+        }
+        if (currentRole === 'Engineer') {
+            const engineerCard = addEngineer(currentMember);
+            employeeArray.push(engineerCard);
+        }
+        if (currentRole === 'Intern') {
+            const internCard = addIntern(currentMember);
+            employeeArray.push(internCard);
+        }
+    }
+
+    const employeeCards = employeeArray.join('');
+
+    const generatedTeam = generateTeamMember(employeeCards);
+    return generatedTeam;
 }
 
-const generateList = (employees) =>
-    `<!DOCTYPE html>
+const generateTeamMember = function(employeeCards) {
+    return `<!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -84,11 +92,9 @@ const generateList = (employees) =>
             </div>
         </div>
         <div class="subContainer d-flex justify-content-center">
-        ${teamManager(employees)} 
-        ${teamEngineer(employees)}
-        ${teamIntern(employees)}
+        ${employeeCards}
         </div>
     </body>
     </html>`;
-
+}
 module.exports = generateList;
