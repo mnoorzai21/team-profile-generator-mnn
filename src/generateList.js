@@ -9,7 +9,7 @@ const addManager = function(managerInfo) {
             <div class="subCard text-white bg-primary mb-3" style="max-width: 18rem;">
             <div class="id card-header">ID: ${managerInfo.id}</div>
             <div class="email card-header">Email: ${managerInfo.email}</div>
-            <div class="email card-header">Email:School: ${managerInfo.officeNumber}</div>
+            <div class="email card-header">Office Numbeer: ${managerInfo.officeNumber}</div>
         </div>
     </div>
     </div>`;
@@ -26,7 +26,7 @@ const addEngineer = function(engineerInfo) {
             <div class="subCard text-white bg-primary mb-3" style="max-width: 18rem;">
             <div class="id card-header">ID: ${engineerInfo.id}</div>
             <div class="email card-header">Email: ${engineerInfo.email}</div>
-            <div class="email card-header">Email:School: ${engineerInfo.github}</div>
+            <div class="email card-header">GitHub Username: ${engineerInfo.github}</div>
         </div>
     </div>
     </div>`;
@@ -43,7 +43,7 @@ const addIntern = function(internInfo) {
             <div class="subCard text-white bg-primary mb-3" style="max-width: 18rem;">
             <div class="id card-header">ID: ${internInfo.id}</div>
             <div class="email card-header">Email: ${internInfo.email}</div>
-            <div class="email card-header">Email:School: ${internInfo.school}</div>
+            <div class="email card-header">School: ${internInfo.school}</div>
        </div>
     </div>
     </div>`;
